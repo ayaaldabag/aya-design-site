@@ -1,88 +1,1111 @@
 
-<!DOCTYPE html>
+html_content = '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>❁࿓ 𝓐𝔂𝓪_𝓓𝓮𝓼𝓲𝓰𝓷 𝓲𝓷𝓿𝓲𝓽𝓪𝓽𝓲𝓸𝓷𝓮 ࿓❁</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aya Atelier | Architecture & Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --pink-light: #F8E8EE;
+            --pink-medium: #F2C6DE;
+            --pink-dark: #E8A0BF;
+            --pink-deep: #D4729A;
+            --gold: #C9A96E;
+            --gold-light: #E8D5A3;
+            --gold-dark: #A68B4B;
+            --black: #1A1A1A;
+            --black-soft: #2D2D2D;
+            --white: #FFFFFF;
+            --cream: #FDF8F3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-img {
+            width: 55px; height: 55px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+        }
+        .logo-text {
+            font-family: 'Playfair Display', serif; font-size: 1.4rem;
+            font-weight: 600; color: var(--black); letter-spacing: 1px;
+        }
+        .logo-text span { color: var(--gold); font-weight: 400; }
+
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--black-soft); font-weight: 500;
+            font-size: 0.95rem; position: relative; transition: color 0.3s; padding: 5px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold-dark); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .lang-switcher {
+            display: flex; gap: 8px; background: var(--pink-light);
+            padding: 5px 10px; border-radius: 25px; border: 1px solid var(--gold-light);
+        }
+        .lang-btn {
+            background: none; border: none; padding: 6px 14px; border-radius: 20px;
+            cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: 600;
+            font-size: 0.8rem; color: var(--black-soft); transition: all 0.3s;
+        }
+        .lang-btn.active {
+            background: var(--gold); color: var(--white);
+            box-shadow: 0 2px 10px rgba(201, 169, 110, 0.4);
+        }
+        .lang-btn:hover:not(.active) { background: var(--pink-medium); }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--pink-light) 50%, var(--cream) 100%);
+            overflow: hidden; padding-top: 100px;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--pink-medium) 0%, transparent 70%);
+            opacity: 0.5; animation: float 8s ease-in-out infinite;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -30%; left: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+            opacity: 0.3; animation: float 10s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            text-align: center; z-index: 2; max-width: 900px; padding: 0 20px;
+        }
+        .hero-logo-large {
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(201, 169, 110, 0.4), 0 0 60px rgba(232, 160, 191, 0.2);
+            margin-bottom: 30px; animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif; font-size: 4rem;
+            font-weight: 700; color: var(--black); margin-bottom: 10px; letter-spacing: 3px;
+        }
+        .hero h1 span { color: var(--gold); font-weight: 400; }
+        .hero-subtitle {
+            font-size: 1.3rem; color: var(--black-soft); margin-bottom: 15px;
+            font-weight: 300; letter-spacing: 5px; text-transform: uppercase;
+        }
+        .hero-desc {
+            font-size: 1.1rem; color: var(--black-soft); max-width: 600px;
+            margin: 0 auto 40px; line-height: 1.8; opacity: 0.8;
+        }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            padding: 14px 35px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; font-size: 1rem; transition: all 0.4s ease;
+            cursor: pointer; border: none; font-family: 'Cairo', sans-serif;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--white); box-shadow: 0 5px 20px rgba(201, 169, 110, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.6);
+        }
+        .btn-outline {
+            background: transparent; color: var(--black); border: 2px solid var(--gold);
+        }
+        .btn-outline:hover {
+            background: var(--gold); color: var(--white); transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute; bottom: 30px; left: 50%;
+            transform: translateX(-50%); animation: bounce 2s infinite;
+        }
+        .scroll-indicator i { font-size: 1.5rem; color: var(--gold); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section { padding: 100px 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-label {
+            font-size: 0.9rem; color: var(--gold); text-transform: uppercase;
+            letter-spacing: 4px; font-weight: 600; margin-bottom: 15px; display: block;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif; font-size: 3rem;
+            color: var(--black); margin-bottom: 20px; position: relative; display: inline-block;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -15px; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--pink-deep)); border-radius: 2px;
+        }
+        .section-desc {
+            max-width: 700px; margin: 30px auto 0; color: var(--black-soft);
+            line-height: 1.8; font-size: 1.05rem;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+        /* ===== ABOUT SECTION ===== */
+        .about { background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { position: relative; }
+        .about-img img {
+            width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        .about-img::before {
+            content: ''; position: absolute; top: -20px; right: -20px;
+            width: 100%; height: 100%; border: 3px solid var(--gold);
+            border-radius: 20px; z-index: -1;
+        }
+        .about-content h3 {
+            font-family: 'Playfair Display', serif; font-size: 2.2rem;
+            color: var(--black); margin-bottom: 25px;
+        }
+        .about-content p {
+            color: var(--black-soft); line-height: 1.9; margin-bottom: 20px; font-size: 1.05rem;
+        }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .stat-item {
+            text-align: center; padding: 25px; background: var(--pink-light);
+            border-radius: 15px; border: 1px solid var(--gold-light); transition: transform 0.3s;
+        }
+        .stat-item:hover { transform: translateY(-5px); }
+        .stat-number {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem;
+            color: var(--gold); font-weight: 700; display: block;
+        }
+        .stat-label { font-size: 0.9rem; color: var(--black-soft); margin-top: 5px; }
+
+        /* ===== SERVICES SECTION ===== */
+        .services { background: linear-gradient(180deg, var(--cream) 0%, var(--pink-light) 100%); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
+        .service-card {
+            background: var(--white); padding: 45px 35px; border-radius: 20px;
+            text-align: center; border: 1px solid rgba(201, 169, 110, 0.2);
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--pink-deep));
+            transform: scaleX(0); transition: transform 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(201, 169, 110, 0.2);
+        }
+        .service-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px; font-size: 1.8rem; color: var(--gold-dark);
+            border: 2px solid var(--gold-light);
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.4rem;
+            color: var(--black); margin-bottom: 15px;
+        }
+        .service-card p { color: var(--black-soft); line-height: 1.7; font-size: 0.95rem; }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio { background: var(--white); }
+        .portfolio-filter {
+            display: flex; justify-content: center; gap: 15px;
+            margin-bottom: 50px; flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px; border: 2px solid var(--gold-light); background: transparent;
+            border-radius: 30px; cursor: pointer; font-family: 'Cairo', sans-serif;
+            font-weight: 600; color: var(--black-soft); transition: all 0.3s; font-size: 0.9rem;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold); color: var(--white); border-color: var(--gold);
+        }
+        .portfolio-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;
+        }
+        .portfolio-item {
+            position: relative; border-radius: 15px; overflow: hidden;
+            aspect-ratio: 4/3; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .portfolio-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.9) 0%, transparent 60%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 30px; opacity: 0; transition: opacity 0.4s;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay h4 {
+            font-family: 'Playfair Display', serif; font-size: 1.3rem;
+            color: var(--white); margin-bottom: 8px;
+        }
+        .portfolio-overlay p { color: var(--gold-light); font-size: 0.9rem; }
+        .portfolio-overlay .view-btn {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: var(--gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 1.2rem; opacity: 0; transition: all 0.4s;
+        }
+        .portfolio-item:hover .view-btn { opacity: 1; }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact { background: linear-gradient(135deg, var(--black) 0%, var(--black-soft) 100%); color: var(--white); }
+        .contact .section-title { color: var(--white); }
+        .contact .section-label { color: var(--gold); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif; font-size: 2rem;
+            margin-bottom: 25px; color: var(--white);
+        }
+        .contact-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 30px; }
+        .contact-details { display: flex; flex-direction: column; gap: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; }
+        .contact-item i {
+            width: 50px; height: 50px; background: var(--gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--black); font-size: 1.1rem;
+        }
+        .contact-item div strong { color: var(--white); display: block; margin-bottom: 3px; }
+        .contact-item div span { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+        .contact-form {
+            background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--gold-light); font-weight: 500; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(201, 169, 110, 0.3); border-radius: 10px;
+            color: var(--white); font-family: 'Cairo', sans-serif; font-size: 1rem; transition: all 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--gold); background: rgba(255,255,255,0.12);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .contact-form .btn-primary { width: 100%; justify-content: center; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black); color: var(--white);
+            padding: 60px 0 30px; border-top: 1px solid rgba(201, 169, 110, 0.2);
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px;
+        }
+        .footer-brand h3 span { color: var(--gold); }
+        .footer-brand p { color: rgba(255,255,255,0.6); line-height: 1.7; font-size: 0.95rem; }
+        .footer-links h4 {
+            color: var(--gold); font-size: 1.1rem; margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.6); text-decoration: none;
+            transition: color 0.3s; font-size: 0.95rem;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; }
+        .social-links a {
+            width: 42px; height: 42px; background: rgba(201, 169, 110, 0.2);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--gold); text-decoration: none; transition: all 0.3s;
+            border: 1px solid var(--gold-light);
+        }
+        .social-links a:hover {
+            background: var(--gold); color: var(--black); transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center; padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4); font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            section { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
+        }
+
+        /* Japanese font override */
+        .lang-ja {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .lang-ja .hero h1,
+        .lang-ja .section-title,
+        .lang-ja .about-content h3,
+        .lang-ja .service-card h3,
+        .lang-ja .contact-info h3,
+        .lang-ja .footer-brand h3,
+        .lang-ja .portfolio-overlay h4 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="overlay">
-    <h1>❁࿓ 𝓐𝔂𝓪_𝓓𝓮𝓼𝓲𝓰𝓷 𝓲𝓷𝓿𝓲𝓽𝓪𝓽𝓲𝓸𝓷𝓮 ࿓❁</h1>
-    <p>صمم دعوتك بأناقة وفخامة ✨</p>
-  </div>
-</header>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="1000054420.png" alt="Aya Atelier Logo" class="logo-img">
+                <div class="logo-text">Aya <span>Atelier</span></div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-home">Home</a></li>
+                <li><a href="#about" class="nav-about">About</a></li>
+                <li><a href="#services" class="nav-services">Services</a></li>
+                <li><a href="#portfolio" class="nav-portfolio">Portfolio</a></li>
+                <li><a href="#contact" class="nav-contact">Contact</a></li>
+            </ul>
+            
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ar" onclick="changeLang('ar')">العربية</button>
+                <button class="lang-btn" data-lang="en" onclick="changeLang('en')">English</button>
+                <button class="lang-btn" data-lang="ja" onclick="changeLang('ja')">日本語</button>
+            </div>
+        </div>
+    </nav>
 
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="1000054420.png" alt="Aya Atelier" class="hero-logo-large">
+            
+            <!-- Arabic -->
+            <div class="lang-content active" data-lang="ar">
+                <h1>Aya <span>Atelier</span></h1>
+                <p class="hero-subtitle">هندسة معمارية وتصميم</p>
+                <p class="hero-desc">نصنع المساحات التي تحكي قصصاً. استوديو معماري متخصص في تصميم المباني السكنية والتجارية والفنادق الفاخرة بأعلى معايير الجودة والإبداع.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn btn-primary"><i class="fas fa-images"></i> تصاميمنا</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> تواصل معنا</a>
+                </div>
+            </div>
+            
+            <!-- English -->
+            <div class="lang-content" data-lang="en">
+                <h1>Aya <span>Atelier</span></h1>
+                <p class="hero-subtitle">Architecture & Design</p>
+                <p class="hero-desc">We craft spaces that tell stories. An architectural studio specializing in residential, commercial, and luxury hotel designs with the highest standards of quality and creativity.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn btn-primary"><i class="fas fa-images"></i> Our Designs</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Us</a>
+                </div>
+            </div>
+            
+            <!-- Japanese -->
+            <div class="lang-content lang-ja" data-lang="ja">
+                <h1>Aya <span>Atelier</span></h1>
+                <p class="hero-subtitle">建築とデザイン</p>
+                <p class="hero-desc">物語を語る空間を創造します。住宅、商業施設、高級ホテルの設計を専門とする建築スタジオ。最高品質と創造性でお届けします。</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn btn-primary"><i class="fas fa-images"></i> 作品を見る</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-<section class="offers">
-  <h2>💖 عروض Aya_disin المميزة 💖</h2>
-  <div class="offer-box">
-    🎁 تصميم بطاقة مجاني<br>
-    يشمل تصميم بسيط مع تعديل واحد فقط. العرض المثالي لتجربة خدمتنا!
-  </div>
-  <div class="offer-box">
-    👑 بطاقة بطراز ملكي فاخر – فقط 7 دولار<br>
-    تصميم راقٍ وفخم يشمل:<br>
-    ✓ 3 تعديلات<br>
-    ✓ دقة عالية بصيغة PDF قابلة للطباعة
-  </div>
-  <div class="offer-box">
-    🎬 بطاقة فيديو فاخرة – فقط 15 دولار<br>
-    تصميم فيديو مميز بطابع جميل يشمل:<br>
-    ✓ تعديلين<br>
-    ✓ دقة عالية مناسبة للمشاركة والطباعة الرقمية
-  </div>
-  <div class="offer-box">
-    💍 بطاقة خطوبة أو عقد قران – فقط 7 دولار<br>
-    واحصل على بطاقة زفاف مجانية!<br>
-    تشمل كل بطاقة:<br>
-    ✓ تعديلين<br>
-    ✓ دقة عالية<br>
-    ✓ ملف PDF قابل للطباعة
-  </div>
-  <div class="offer-box">
-    🌟 فيديو مجاني مقابل دعمنا!<br>
-    احصل على فيديو فخم مجانًا يشمل:<br>
-    ✓ 3 تعديلات<br>
-    ✓ دقة عالية<br>
-    فقط شارك البيج مع اصدقائك و احصل على خمس طلبات عن طريقك سوف تحصل انت على هذا العرص المجاني 
-  </div>
-<form action="https://formspree.io/f/mqabqndr" method="POST" style="max-width: 600px; margin: 0 auto; background: #fefefe; padding: 20px; border-radius: 16px; box-shadow: 0 0 12px rgba(0,0,0,0.1);">
-  <h2 style="text-align:center; color:#c76ba4;">📝 نموذج الطلب</h2>
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label nav-about-label">من نحن</span>
+                <h2 class="section-title nav-about-title">عن الاستوديو</h2>
+                <p class="section-desc nav-about-desc">نحن فريق من المهندسين المعماريين المحترفين الذين يؤمنون بأن التصميم الجيد يمكن أن يحسن حياة الناس</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-img fade-in">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Modern Architecture">
+                </div>
+                
+                <div class="about-content fade-in">
+                    <!-- Arabic -->
+                    <div class="lang-content active" data-lang="ar">
+                        <h3>نحول الرؤى إلى واقع معماري</h3>
+                        <p>تأسس Aya Atelier على يد نخبة من المهندسين المعماريين ذوي الخبرة الواسعة في مجال التصميم المعماري الحديث. نؤمن بأن كل مساحة لها روحها الخاصة، ومهمتنا هي إبراز هذه الروح من خلال تصاميمنا المبتكرة.</p>
+                        <p>نعمل على مشاريع متنوعة تشمل الفلل السكنية الفاخرة، المجمعات التجارية، الفنادق والمنتجعات، بالإضافة إلى التصميم الداخلي المتكامل. نجمع بين الجماليات العصرية والوظائف العملية لخليق بيئات معيشية متناغمة.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">مشروع منجز</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">سنة خبرة</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">مهندس معماري</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- English -->
+                    <div class="lang-content" data-lang="en">
+                        <h3>Turning Visions Into Architectural Reality</h3>
+                        <p>Aya Atelier was founded by a team of experienced architects specializing in modern architectural design. We believe every space has its own soul, and our mission is to bring out that soul through our innovative designs.</p>
+                        <p>We work on diverse projects including luxury residential villas, commercial complexes, hotels and resorts, as well as comprehensive interior design. We combine contemporary aesthetics with practical functionality to create harmonious living environments.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">Architects</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Japanese -->
+                    <div class="lang-content lang-ja" data-lang="ja">
+                        <h3>ビジョンを建築の現実に</h3>
+                        <p>Aya Atelierは、モダンな建築設計を専門とする経験豊富な建築家のチームによって設立されました。私たちは、すべての空間に独自の魂があると信じており、革新的なデザインを通じてその魂を引き出すことが使命です。</p>
+                        <p>高級住宅ヴィラ、商業複合施設、ホテルやリゾート、そして包括的なインテリアデザインなど、多様なプロジェクトに取り組んでいます。現代的な美学と実用的な機能性を融合させ、調和のとれた居住環境を創造します。</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">完了プロジェクト</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">年の経験</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">建築家</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <label>الاسم الكامل:</label>
-  <input type="text" name="الاسم" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label nav-services-label">خدماتنا</span>
+                <h2 class="section-title nav-services-title">ما نقدمه</h2>
+                <p class="section-desc nav-services-desc">حلول معمارية شاملة من التصور الأولي حتى التنفيذ النهائي</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Arabic Services -->
+                <div class="lang-content active" data-lang="ar">
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>التصميم المعماري</h3>
+                        <p>تصاميم معمارية مبتكرة تجمع بين الجمال والوظيفة، مع مراعاة البيئة والسياق المحلي لكل مشروع</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>التصميم الداخلي</h3>
+                        <p>تصميمات داخلية فاخرة تعكس شخصية العميل، مع اختيار أفضل المواد والأثاث والإضاءة</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-landmark"></i></div>
+                        <h3>تصميم الفنادق</h3>
+                        <p>تصميم فنادق ومنتجعات فاخرة تركز على تجربة الضيف الفريدة والأجواء المميزة</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>المشاريع التجارية</h3>
+                        <p>تصميم مكاتب ومراكز تجارية ومجمعات سكنية بمعايير عالمية وكفاءة عالية</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-tree"></i></div>
+                        <h3>التصميم الخارجي</h3>
+                        <p>تصميم الحدائق والمساحات الخارجية بما يتناسب مع الطبيعة المحيطة والمناخ</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-cube"></i></div>
+                        <h3>النمذجة ثلاثية الأبعاد</h3>
+                        <p>نماذج واقعية ثلاثية الأبعاد تساعد العملاء على تصور المشروع قبل البدء بالتنفيذ</p>
+                    </div>
+                </div>
+                
+                <!-- English Services -->
+                <div class="lang-content" data-lang="en">
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>Architectural Design</h3>
+                        <p>Innovative architectural designs that blend beauty with functionality, considering the environment and local context of each project</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>Interior Design</h3>
+                        <p>Luxury interior designs that reflect the client's personality, with the finest materials, furniture, and lighting selections</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-landmark"></i></div>
+                        <h3>Hotel Design</h3>
+                        <p>Design of luxury hotels and resorts focusing on unique guest experiences and distinctive atmospheres</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Commercial Projects</h3>
+                        <p>Design of offices, commercial centers, and residential complexes with global standards and high efficiency</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-tree"></i></div>
+                        <h3>Exterior Design</h3>
+                        <p>Design of gardens and outdoor spaces that harmonize with the surrounding nature and climate</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-cube"></i></div>
+                        <h3>3D Modeling</h3>
+                        <p>Realistic 3D models that help clients visualize the project before implementation begins</p>
+                    </div>
+                </div>
+                
+                <!-- Japanese Services -->
+                <div class="lang-content lang-ja" data-lang="ja">
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>建築設計</h3>
+                        <p>美しさと機能性を融合させた革新的な建築設計。各プロジェクトの環境と地域性を考慮しています</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>インテリアデザイン</h3>
+                        <p>お客様の個性を反映した高級インテリアデザイン。最高級の素材、家具、照明を選定します</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-landmark"></i></div>
+                        <h3>ホテル設計</h3>
+                        <p>ユニークなゲスト体験と特別な雰囲気に焦点を当てた高級ホテルやリゾートの設計</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>商業プロジェクト</h3>
+                        <p>グローバル基準と高い効率性を持つオフィス、商業センター、住宅複合施設の設計</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-tree"></i></div>
+                        <h3>エクステリアデザイン</h3>
+                        <p>周囲の自然と気候に調和する庭園や屋外空間の設計</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon"><i class="fas fa-cube"></i></div>
+                        <h3>3Dモデリング</h3>
+                        <p>施工開始前にプロジェクトを視覚化できるリアルな3Dモデル</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <label>اسم العريس والعروسة:</label>
-  <input type="text" name="اسماء العرسان" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+    <!-- ===== PORTFOLIO SECTION ===== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label nav-portfolio-label">معرض الأعمال</span>
+                <h2 class="section-title nav-portfolio-title">تصاميمنا</h2>
+                <p class="section-desc nav-portfolio-desc">مجموعة مختارة من أبرز مشاريعنا المعمارية</p>
+            </div>
+            
+            <div class="portfolio-filter fade-in">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="residential">سكني</button>
+                <button class="filter-btn" data-filter="commercial">تجاري</button>
+                <button class="filter-btn" data-filter="hotel">فنادق</button>
+                <button class="filter-btn" data-filter="interior">داخلي</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Luxury Villa">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>فيلا الجاردن</h4>
+                        <p>تصميم سكني فاخر</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-category="hotel">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Luxury Hotel">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>فندق النخلة</h4>
+                        <p>منتجع فاخر 5 نجوم</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Commercial Tower">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>برج الأعمال</h4>
+                        <p>مجمع تجاري متكامل</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-category="interior">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Interior Design">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>صالة الاستقبال</h4>
+                        <p>تصميم داخلي حديث</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Modern House">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>بيت الزجاج</h4>
+                        <p>فيلا عصرية</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-category="hotel">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" alt="Boutique Hotel">
+                    <div class="portfolio-overlay">
+                        <div class="view-btn"><i class="fas fa-expand"></i></div>
+                        <h4>بوتيك ريزيدنس</h4>
+                        <p>فندق بوتيكي فاخر</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <label>المكان:</label>
-  <input type="text" name="المكان" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label nav-contact-label">تواصل معنا</span>
+                <h2 class="section-title nav-contact-title">لنبدأ مشروعك</h2>
+                <p class="section-desc nav-contact-desc">نحن هنا لتحويل أفكارك إلى واقع معماري استثنائي</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <!-- Arabic -->
+                    <div class="lang-content active" data-lang="ar">
+                        <h3>معلومات التواصل</h3>
+                        <p>نحن متحمسون للسماع عن مشروعك القادم. تواصل معنا اليوم ودعنا نناقش كيف يمكننا تحويل رؤيتك إلى تصميم معماري مذهل.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>العنوان</strong>
+                                    <span>الرياض، المملكة العربية السعودية</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>الهاتف</strong>
+                                    <span>+966 50 123 4567</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>البريد الإلكتروني</strong>
+                                    <span>info@ayaatelier.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- English -->
+                    <div class="lang-content" data-lang="en">
+                        <h3>Contact Information</h3>
+                        <p>We are excited to hear about your next project. Contact us today and let's discuss how we can transform your vision into a stunning architectural design.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <span>Riyadh, Saudi Arabia</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <span>+966 50 123 4567</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <span>info@ayaatelier.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Japanese -->
+                    <div class="lang-content lang-ja" data-lang="ja">
+                        <h3>連絡先情報</h3>
+                        <p>次のプロジェクトについてお聞かせください。今日ご連絡いただき、どのようにしてビジョンを素晴らしい建築デザインに変換できるかをご相談しましょう。</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>住所</strong>
+                                    <span>リヤド、サウジアラビア</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>電話</strong>
+                                    <span>+966 50 123 4567</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>メール</strong>
+                                    <span>info@ayaatelier.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your message! We will contact you soon.');">
+                        <div class="form-group">
+                            <label class="form-name-label">الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-email-label">البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-phone-label">رقم الهاتف</label>
+                            <input type="tel" placeholder="+966 50 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-message-label">رسالتك</label>
+                            <textarea placeholder="صف مشروعك هنا..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit-btn">
+                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <label>التاريخ:</label>
-  <input type="date" name="التاريخ" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Aya <span>Atelier</span></h3>
+                    <p>استوديو معماري متخصص في تصميم المباني السكنية والتجارية والفنادق الفاخرة. نصنع المساحات التي تحكي قصصاً.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#portfolio">أعمالنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="#">التصميم المعماري</a></li>
+                        <li><a href="#">التصميم الداخلي</a></li>
+                        <li><a href="#">تصميم الفنادق</a></li>
+                        <li><a href="#">النمذجة 3D</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>ساعات العمل</h4>
+                    <ul>
+                        <li><a href="#">الأحد - الخميس: 9ص - 6م</a></li>
+                        <li><a href="#">الجمعة: مغلق</a></li>
+                        <li><a href="#">السبت: 10ص - 4م</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Aya Atelier. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
 
-  <label>الوقت:</label>
-  <input type="time" name="الوقت" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+    <script>
+        // ===== LANGUAGE SWITCHER =====
+        const translations = {
+            ar: {
+                nav: { home: 'الرئيسية', about: 'من نحن', services: 'خدماتنا', portfolio: 'أعمالنا', contact: 'تواصل معنا' },
+                labels: { about: 'من نحن', services: 'خدماتنا', portfolio: 'معرض الأعمال', contact: 'تواصل معنا' },
+                titles: { about: 'عن الاستوديو', services: 'ما نقدمه', portfolio: 'تصاميمنا', contact: 'لنبدأ مشروعك' },
+                descs: { 
+                    about: 'نحن فريق من المهندسين المعماريين المحترفين الذين يؤمنون بأن التصميم الجيد يمكن أن يحسن حياة الناس',
+                    services: 'حلول معمارية شاملة من التصور الأولي حتى التنفيذ النهائي',
+                    portfolio: 'مجموعة مختارة من أبرز مشاريعنا المعمارية',
+                    contact: 'نحن هنا لتحويل أفكارك إلى واقع معماري استثنائي'
+                },
+                form: { name: 'الاسم الكامل', email: 'البريد الإلكتروني', phone: 'رقم الهاتف', message: 'رسالتك', submit: 'إرسال الرسالة' }
+            },
+            en: {
+                nav: { home: 'Home', about: 'About', services: 'Services', portfolio: 'Portfolio', contact: 'Contact' },
+                labels: { about: 'About Us', services: 'Our Services', portfolio: 'Portfolio', contact: 'Get In Touch' },
+                titles: { about: 'About The Studio', services: 'What We Offer', portfolio: 'Our Designs', contact: "Let's Start Your Project" },
+                descs: { 
+                    about: 'We are a team of professional architects who believe that good design can improve people\'s lives',
+                    services: 'Comprehensive architectural solutions from initial concept to final implementation',
+                    portfolio: 'A curated selection of our finest architectural projects',
+                    contact: 'We are here to turn your ideas into exceptional architectural reality'
+                },
+                form: { name: 'Full Name', email: 'Email Address', phone: 'Phone Number', message: 'Your Message', submit: 'Send Message' }
+            },
+            ja: {
+                nav: { home: 'ホーム', about: '私たちについて', services: 'サービス', portfolio: 'ポートフォリオ', contact: 'お問い合わせ' },
+                labels: { about: '私たちについて', services: 'サービス', portfolio: '作品集', contact: 'お問い合わせ' },
+                titles: { about: 'スタジオについて', services: '提供サービス', portfolio: 'デザイン作品', contact: 'プロジェクトを始めましょう' },
+                descs: { 
+                    about: '優れたデザインが人々の生活を向上できると信じるプロの建築家チームです',
+                    services: '初期コンセプトから最終実施までの包括的な建築ソリューション',
+                    portfolio: '私たちの最高の建築プロジェクトの厳選コレクション',
+                    contact: 'あなたのアイデアを例外的な建築の現実に変えるお手伝いをします'
+                },
+                form: { name: 'お名前', email: 'メールアドレス', phone: '電話番号', message: 'メッセージ', submit: '送信する' }
+            }
+        };
 
-  <label>رقم الهاتف:</label>
-  <input type="tel" name="رقم الهاتف" required pattern="[0-9+ ]+" style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+        function changeLang(lang) {
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update content visibility
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.toggle('active', el.dataset.lang === lang);
+            });
+            
+            // Update text content
+            const t = translations[lang];
+            
+            // Nav links
+            document.querySelector('.nav-home').textContent = t.nav.home;
+            document.querySelector('.nav-about').textContent = t.nav.about;
+            document.querySelector('.nav-services').textContent = t.nav.services;
+            document.querySelector('.nav-portfolio').textContent = t.nav.portfolio;
+            document.querySelector('.nav-contact').textContent = t.nav.contact;
+            
+            // Section labels
+            document.querySelector('.nav-about-label').textContent = t.labels.about;
+            document.querySelector('.nav-services-label').textContent = t.labels.services;
+            document.querySelector('.nav-portfolio-label').textContent = t.labels.portfolio;
+            document.querySelector('.nav-contact-label').textContent = t.labels.contact;
+            
+            // Section titles
+            document.querySelector('.nav-about-title').textContent = t.titles.about;
+            document.querySelector('.nav-services-title').textContent = t.titles.services;
+            document.querySelector('.nav-portfolio-title').textContent = t.titles.portfolio;
+            document.querySelector('.nav-contact-title').textContent = t.titles.contact;
+            
+            // Section descriptions
+            document.querySelector('.nav-about-desc').textContent = t.descs.about;
+            document.querySelector('.nav-services-desc').textContent = t.descs.services;
+            document.querySelector('.nav-portfolio-desc').textContent = t.descs.portfolio;
+            document.querySelector('.nav-contact-desc').textContent = t.descs.contact;
+            
+            // Form labels
+            document.querySelector('.form-name-label').textContent = t.form.name;
+            document.querySelector('.form-email-label').textContent = t.form.email;
+            document.querySelector('.form-phone-label').textContent = t.form.phone;
+            document.querySelector('.form-message-label').textContent = t.form.message;
+            document.querySelector('.form-submit-btn').innerHTML = `<i class="fas fa-paper-plane"></i> ${t.form.submit}`;
+            
+            // Update placeholders
+            const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+            if (lang === 'ar') {
+                inputs[0].placeholder = 'أدخل اسمك الكامل';
+                inputs[1].placeholder = 'example@email.com';
+                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[3].placeholder = 'صف مشروعك هنا...';
+            } else if (lang === 'en') {
+                inputs[0].placeholder = 'Enter your full name';
+                inputs[1].placeholder = 'example@email.com';
+                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[3].placeholder = 'Describe your project here...';
+            } else if (lang === 'ja') {
+                inputs[0].placeholder = 'お名前を入力してください';
+                inputs[1].placeholder = 'example@email.com';
+                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[3].placeholder = 'プロジェクトについて教えてください...';
+            }
+            
+            // Update RTL/LTR
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'ar' ? 'ar' : 'en');
+            
+            // Update body font
+            if (lang === 'ja') {
+                document.body.classList.add('lang-ja');
+            } else {
+                document.body.classList.remove('lang-ja');
+            }
+        }
 
-  <label>اختيار العرض:</label>
-  <select name="العرض المختار" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
-    <option value="">-- اختر عرضاً --</option>
-    <option value="بطاقة مجانية">🎁 بطاقة مجانية</option>
-    <option value="بطاقة ملكية - 7$">👑 بطاقة ملكية - 7 دولار</option>
-    <option value="بطاقة فيديو - 15$">🎬 فيديو فاخر - 15 دولار</option>
-    <option value="بطاقة خطوبة + زفاف مجانية - 7$">💍 خطوبة - 7 دولار</option>
-    <option value="فيديو مجاني مقابل مشاركة الموقع">🌟 فيديو مجاني</option>
-  </select>
+        // ===== PORTFOLIO FILTER =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
 
-  <label>السعر النهائي المتوقع:</label>
-  <input type="text" name="السعر النهائي" placeholder="مثال: 7 دولار" required style="width:100%; padding:10px; margin-bottom:10px; border-radius: 8px; border:1px solid #ccc;">
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-  <button type="submit" style="background-color: #c76ba4; color: white; padding: 12px 20px; border: none; border-radius: 10px; font-size: 16px; width: 100%; cursor: pointer;">📩 إرسال الطلب</button>
-</form>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                navbar.style.padding = '10px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/aya_atelier_website.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Website saved successfully!")
+print(f"File size: {len(html_content)} characters")

@@ -330,6 +330,8 @@ html_content = '''<!DOCTYPE html>
         }
         .contact-item div strong { color: var(--white); display: block; margin-bottom: 3px; }
         .contact-item div span { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+        .contact-item div a { color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: color 0.3s; }
+        .contact-item div a:hover { color: var(--gold); }
         .contact-form {
             background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px;
             border: 1px solid rgba(201, 169, 110, 0.2);
@@ -779,21 +781,21 @@ html_content = '''<!DOCTYPE html>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <strong>العنوان</strong>
-                                    <span>الرياض، المملكة العربية السعودية</span>
+                                    <span>العراق، بغداد</span>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <i class="fas fa-phone"></i>
+                                <i class="fab fa-instagram"></i>
                                 <div>
-                                    <strong>الهاتف</strong>
-                                    <span>+966 50 123 4567</span>
+                                    <strong>الانستغرام</strong>
+                                    <a href="https://www.instagram.com/20aya_atelier?igsh=MWZvemVreHRiM3Rjbw==" target="_blank">@20aya_atelier</a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <strong>البريد الإلكتروني</strong>
-                                    <span>info@ayaatelier.com</span>
+                                    <span>Marinaaomar5678@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -808,21 +810,21 @@ html_content = '''<!DOCTYPE html>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <strong>Address</strong>
-                                    <span>Riyadh, Saudi Arabia</span>
+                                    <span>Iraq, Baghdad</span>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <i class="fas fa-phone"></i>
+                                <i class="fab fa-instagram"></i>
                                 <div>
-                                    <strong>Phone</strong>
-                                    <span>+966 50 123 4567</span>
+                                    <strong>Instagram</strong>
+                                    <a href="https://www.instagram.com/20aya_atelier?igsh=MWZvemVreHRiM3Rjbw==" target="_blank">@20aya_atelier</a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <strong>Email</strong>
-                                    <span>info@ayaatelier.com</span>
+                                    <span>Marinaaomar5678@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -837,21 +839,21 @@ html_content = '''<!DOCTYPE html>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <strong>住所</strong>
-                                    <span>リヤド、サウジアラビア</span>
+                                    <span>イラク、バグダッド</span>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <i class="fas fa-phone"></i>
+                                <i class="fab fa-instagram"></i>
                                 <div>
-                                    <strong>電話</strong>
-                                    <span>+966 50 123 4567</span>
+                                    <strong>インスタグラム</strong>
+                                    <a href="https://www.instagram.com/20aya_atelier?igsh=MWZvemVreHRiM3Rjbw==" target="_blank">@20aya_atelier</a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <strong>メール</strong>
-                                    <span>info@ayaatelier.com</span>
+                                    <span>Marinaaomar5678@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -859,22 +861,22 @@ html_content = '''<!DOCTYPE html>
                 </div>
                 
                 <div class="contact-form fade-in">
-                    <form onsubmit="event.preventDefault(); alert('Thank you for your message! We will contact you soon.');">
+                    <form action="https://formspree.io/f/mqabqndr" method="POST">
                         <div class="form-group">
                             <label class="form-name-label">الاسم الكامل</label>
-                            <input type="text" placeholder="أدخل اسمك الكامل" required>
+                            <input type="text" name="name" placeholder="أدخل اسمك الكامل" required>
                         </div>
                         <div class="form-group">
                             <label class="form-email-label">البريد الإلكتروني</label>
-                            <input type="email" placeholder="example@email.com" required>
+                            <input type="email" name="email" placeholder="example@email.com" required>
                         </div>
                         <div class="form-group">
                             <label class="form-phone-label">رقم الهاتف</label>
-                            <input type="tel" placeholder="+966 50 000 0000">
+                            <input type="tel" name="phone" placeholder="+964 000 000 0000">
                         </div>
                         <div class="form-group">
                             <label class="form-message-label">رسالتك</label>
-                            <textarea placeholder="صف مشروعك هنا..." required></textarea>
+                            <textarea name="message" placeholder="صف مشروعك هنا..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary form-submit-btn">
                             <i class="fas fa-paper-plane"></i> إرسال الرسالة
@@ -893,7 +895,7 @@ html_content = '''<!DOCTYPE html>
                     <h3>Aya <span>Atelier</span></h3>
                     <p>استوديو معماري متخصص في تصميم المباني السكنية والتجارية والفنادق الفاخرة. نصنع المساحات التي تحكي قصصاً.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/20aya_atelier?igsh=MWZvemVreHRiM3Rjbw==" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-pinterest-p"></i></a>
@@ -1028,17 +1030,17 @@ html_content = '''<!DOCTYPE html>
             if (lang === 'ar') {
                 inputs[0].placeholder = 'أدخل اسمك الكامل';
                 inputs[1].placeholder = 'example@email.com';
-                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[2].placeholder = '+964 000 000 0000';
                 inputs[3].placeholder = 'صف مشروعك هنا...';
             } else if (lang === 'en') {
                 inputs[0].placeholder = 'Enter your full name';
                 inputs[1].placeholder = 'example@email.com';
-                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[2].placeholder = '+964 000 000 0000';
                 inputs[3].placeholder = 'Describe your project here...';
             } else if (lang === 'ja') {
                 inputs[0].placeholder = 'お名前を入力してください';
                 inputs[1].placeholder = 'example@email.com';
-                inputs[2].placeholder = '+966 50 000 0000';
+                inputs[2].placeholder = '+964 000 000 0000';
                 inputs[3].placeholder = 'プロジェクトについて教えてください...';
             }
             
@@ -1104,8 +1106,8 @@ html_content = '''<!DOCTYPE html>
 </body>
 </html>'''
 
-with open('/mnt/agents/output/aya_atelier_website.html', 'w', encoding='utf-8') as f:
+with open('/mnt/agents/output/aya_atelier_updated.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("Website saved successfully!")
-print(f"File size: {len(html_content)} characters")
+print("✅ تم حفظ الموقع المعدل بنجاح!")
+print(f"حجم الملف: {len(html_content)} حرف")
